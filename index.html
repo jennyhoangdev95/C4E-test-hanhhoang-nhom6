@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 01</title>
+</head>
+
+<body>
+    <h1>Tổng các số nguyên tố trong khoảng a và b</h1>
+    <form>
+        <label for="number1">Nhập số a:</label>
+        <input type="number" id="number1" name="number1"><br><br>
+
+        <label for="number2">Nhập số b:</label>
+        <input type="number" id="number2" name="number2"><br><br>
+
+        <input type="button" value="Tính tổng" onclick="Sum()">
+    </form>
+    <p id="result"></p>
+
+    <script>
+
+        function Sum() {
+            var number1 = document.getElementById("number1").value;
+            var number2 = document.getElementById("number2").value;
+            if (number1 === "" || number2 === "") {
+                alert("Vui lòng nhập đầy đủ thông tin");
+                return;
+            }
+            number1 = parseInt(number1);
+            number2 = parseInt(number2);
+            if (number1 > number2) {
+                var temp = number1;
+                number1 = number2;
+                number2 = temp;
+            }
+            var sum = 0;
+            for (var i = number1; i <= number2; i++) {
+                if (isPrime(i)) {
+                    sum += i;
+                }
+            }
+            if (sum > 0) {
+                document.getElementById("result").innerHTML = "Tổng các số nguyên tố trong khoảng từ " + number1 + " đến " + number2 + " là " + sum;
+            } else {
+                document.getElementById("result").innerHTML = "Không có số nguyên tố trong khoảng từ " + number1 + " đến " + number2;
+            }
+        }
+
+        function isPrime(number) {
+            if (number < 2) {
+                return false;
+            }
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
